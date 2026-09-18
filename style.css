@@ -6,7 +6,8 @@ body {
     width: 800px;
     height: 1000px;
     margin: 0 auto;
-    background-color: aquamarine;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* background-color: aquamarine; */
 }
 
 #cabecalho {
@@ -18,36 +19,136 @@ body {
 #destaques {
     width: 800px;
     height: 150px;
-    background-color: lightpink;
+    /* background-color: lightpink; */
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    anchor-name: --destaques;
 }
 
+#destaques::scroll-button(*) {
+    position: absolute;
+    position-anchor: --destaques;
+    align-self: anchor-center;
+    border-radius: 50%;
+    border: none;
+    background: none    ;
+    color: white;
+    height: 30px;
+    width: 30px;
+    opacity: 50%;
+}
+
+#destaques::scroll-button(*):hover {
+    opacity: 100%;
+}
+
+#destaques::scroll-button(left) {
+    content: url('voltar.png');
+    /* background-image: url('proximo.png'); */
+    right: calc(anchor(left) - 45px);
+}
+
+#destaques::scroll-button(right) {
+    content: url('proximo.png');
+    left: calc(anchor(right) - 45px);
+}
+
+.destacado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 90%;
+    margin-left: 18px;
+    margin-right: 18px;
+    font-size: 0.8rem;
+}
+
+.destacado img {
+    transition: 0.3s;
+    padding: 2px;
+    border-radius: 50%;
+    height: 77px;
+    
+}
+
+.destacado img:hover {
+    transition: 0.3s;
+    box-shadow: 0 0 10px #000000;
+    scale: 115%;
+}
+
+#imagebox {
+    width: 81px;
+    height: 81px;
+    border: 3px solid rgb(207, 207, 207);
+    border-image-outset: 10px;
+    border-radius: 50%;
+}
+
+
 #feed {
+    transition: 0.3s;
     width: 800px;
     height: 1000px;
-    background-color: rgb(141, 177, 245);
+    /* background-color: rgb(141, 177, 245); */
+    display: grid;
+    grid-template-columns: 266px 266px 266px;
+    grid-template-rows: 355px 355px 355px;
+    gap: 1px;
+}
+
+.feedimg {
+    transition: 0.3s;
+    width: 266px;
+    height: 355px;
+}
+
+.feedimg:hover {
+    transition: 0.3s;
+    scale: 105%;
+    box-shadow: 0 0 10px #000000;
+
 }
 
 #fotodeperfil {
     width: 300px;
     height: 300px;
-    background-color: blanchedalmond;
+    /* background-color: blanchedalmond; */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-img {
+#fotodeperfil img {
+    height: 200px;
     border-radius: 50%; 
+}
+
+#username {
+    margin-bottom: 0px;
 }
 
 #textodeperfil {
     width: 500px;
     height: 300px;
-    background-color: rgb(255, 98, 130);
+    /* background-color: rgb(255, 98, 130); */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 
+}   
+
+#followb {
+    background-color: rgb(43, 156, 255);
+    color: white;
+    border: none;
+    height: 30px;
+    width: 500px;
+    border-radius: 5px;
 }
 
 #seguidores {
@@ -56,4 +157,22 @@ img {
 
 #seguidores-texto {
     margin-right: 20px;
+}
+
+#threads {
+    height: 18px;
+}
+
+#pill {
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    display: inline-flex;
+    width: fit-content;
+    background-color: lightgray; 
+    border-radius: 15px;
+}
+
+#pill:hover {
+    background-color: rgb(168, 168, 168);
 }
